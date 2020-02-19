@@ -45,6 +45,7 @@ public class Database {
             url = prop.getProperty("db.url");
             user = prop.getProperty("db.user");
             password = prop.getProperty("db.password");
+            System.out.println("connectie ok database");
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -53,10 +54,13 @@ public class Database {
     private Connection createConnection() {
 
         Connection dbConnection = null;
+        System.out.println("createConn");
         try {
             Class.forName(jdbcDriver);
+            System.out.println("na claas forname");
 
             dbConnection = DriverManager.getConnection(url, user, password);
+            System.out.println("na dbConnec");
             System.out.println("connectie geslaagd");
         } catch (ClassNotFoundException | SQLException ex){
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE,null, ex);
